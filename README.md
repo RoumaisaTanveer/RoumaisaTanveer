@@ -80,7 +80,8 @@
 
 ### 📈 GitHub Stats
 
+
 <p align="center">
-<img src="https://github-readme-stats.vercel.app/api?username=RoumaisaTanveer&show_icons=true&theme=blueberry" />
+<img src="https://github-readme-stats.vercel.app/api?username=RoumaisaTanveer&show_icons=true&theme=chartreuse-dark" />
 
 </p>
