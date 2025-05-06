@@ -82,6 +82,6 @@
 
 
 <p align="center">
-<img src="https://github-readme-stats.vercel.app/api?username=RoumaisaTanveer&show_icons=true&theme=city_lights" />
+<img src="https://github-readme-stats.vercel.app/api?username=RoumaisaTanveer&show_icons=true&theme=chartreuse-dark" />
 
 </p>
