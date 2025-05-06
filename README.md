@@ -1,4 +1,4 @@
-<h1 align="center">HEY! ROUMAISA TANVEER HERE 👋🕳</h1>
+<h1 align="center">ROUMAISA TANVEER</h1>
 
 <p align="center">
   <b>Software Engineer | AI Enthusiast | Problem Solver</b>
@@ -25,6 +25,7 @@
 📫 **Get in Touch**  
 📧 roumaisatanveer6@gmail.com  
 💼 [LinkedIn](https://www.linkedin.com/in/roumaisa-tanveer/)
+
 ![Profile views](https://komarev.com/ghpvc/?username=RoumaisaTanveer&color=green)
 
 ### 🛠️ Tech Stack
@@ -80,6 +81,6 @@
 ### 📈 GitHub Stats
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=RoumaisaTanveer&show_icons=true&theme=tokyonight" />
+<img src="https://github-readme-stats.vercel.app/api?username=RoumaisaTanveer&show_icons=true&theme=graywhite" />
 
 </p>
