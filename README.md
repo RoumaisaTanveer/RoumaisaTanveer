@@ -65,7 +65,6 @@
 ![Jira](https://img.shields.io/badge/-Jira-253858?style=flat&logo=jira&logoColor=white)
 
 <!-- Platforms & Hosting -->
-![Netlify](https://img.shields.io/badge/-Netlify-2E3A59?style=flat&logo=netlify&logoColor=white)
 
 ---
 
