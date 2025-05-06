@@ -41,13 +41,43 @@
 | **Platforms & Hosting** |![LeetCode](https://img.shields.io/badge/LeetCode-2D2D2D?style=flat&logo=leetcode&logoColor=white) ![Netlify](https://img.shields.io/badge/Netlify-1C2D3C?style=flat&logo=netlify&logoColor=white) |
 | **Coding Platforms** | ![NeetCode](https://img.shields.io/badge/NeetCode-222222?style=flat&logo=codeforces&logoColor=white)  ![HackerRank](https://img.shields.io/badge/HackerRank-2F4F4F?style=flat&logo=hackerrank&logoColor=white) ![GeeksforGeeks](https://img.shields.io/badge/GeeksforGeeks-1C3C2C?style=flat) |
 
-### 📊 GitHub Stats
+---
 
-![Ahma's GitHub Stats](https://github-readme-stats.vercel.app/api?username=ahma-dev&show_icons=true&theme=radical&hide=contribs,prs)
-![Ahma's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=ahma-dev&layout=compact&theme=radical)
+### 🛠️ Tech Stack
 
-### ⚡ GitHub Streak
+![HTML](https://img.shields.io/badge/-HTML5-orange?style=flat&logo=html5)
+![CSS](https://img.shields.io/badge/-CSS3-blue?style=flat&logo=css3)
+![JavaScript](https://img.shields.io/badge/-JavaScript-yellow?style=flat&logo=javascript)
+![React](https://img.shields.io/badge/-React-black?style=flat&logo=react)
+![Node.js](https://img.shields.io/badge/-Node.js-green?style=flat&logo=node.js)
+![Express](https://img.shields.io/badge/-Express.js-grey?style=flat&logo=express)
+![MongoDB](https://img.shields.io/badge/-MongoDB-darkgreen?style=flat&logo=mongodb)
+![Python](https://img.shields.io/badge/-Python-blue?style=flat&logo=python)
+![Django](https://img.shields.io/badge/-Django-darkgreen?style=flat&logo=django)
+![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-blue?style=flat&logo=postgresql)
+![Ruby on Rails](https://img.shields.io/badge/-Ruby_on_Rails-red?style=flat&logo=rubyonrails)
+![C++](https://img.shields.io/badge/-C++-00599C?style=flat&logo=c%2B%2B)
+![C](https://img.shields.io/badge/-C-000?style=flat&logo=c)
+![Machine Learning](https://img.shields.io/badge/-Machine_Learning-FF6F00?style=flat&logo=apacheairflow)
+![NumPy](https://img.shields.io/badge/-NumPy-013243?style=flat&logo=numpy)
+![Pandas](https://img.shields.io/badge/-Pandas-150458?style=flat&logo=pandas)
+![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-06B6D4?style=flat&logo=tailwindcss)
 
-![Ahma's GitHub Streak](https://streak-stats.demolab.com?user=ahma-dev&theme=radical&hide_border=true)
+---
+
+### 💻 Platforms & Practice
+
+![LeetCode](https://img.shields.io/badge/-LeetCode-FFA116?style=flat&logo=leetcode)
+![HackerRank](https://img.shields.io/badge/-HackerRank-2EC866?style=flat&logo=hackerrank)
+![GeeksforGeeks](https://img.shields.io/badge/-GeeksforGeeks-0F9D58?style=flat&logo=geeksforgeeks)
+![NeetCode](https://img.shields.io/badge/-NeetCode-12100E?style=flat)
 
 
+---
+
+### 📈 GitHub Stats
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=RoumaisaTanveer&show_icons=true&theme=tokyonight" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=RoumaisaTanveer&layout=compact&theme=tokyonight" />
+</p>
