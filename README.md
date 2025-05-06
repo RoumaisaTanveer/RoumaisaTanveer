@@ -81,6 +81,6 @@
 
 
 <p align="center">
-<img src="https://github-readme-stats.vercel.app/api?username=RoumaisaTanveer&show_icons=true&theme=chartreuse-dark" />
+<img src="https://github-readme-stats.vercel.app/api?username=RoumaisaTanveer&show_icons=true&theme=github_dark" />
 
 </p>
