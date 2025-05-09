@@ -18,7 +18,7 @@
 
 🚀 I participate in hackathons, contribute to open-source, and enjoy learning new tech that pushes boundaries (only to some extent😂).
 
-📚 Other than coding, I’m always filling my mind with stupid and creative ideas by reading books and seeing if the idea already exists—then figuring out how to make it better.
+📚 Other than coding, I’m always filling my mind with stupid and creative ideas by reading books and seeing if the idea already exists then figuring out how to make it better.
 
 ---
 
