@@ -26,7 +26,7 @@
 📧 roumaisatanveer6@gmail.com  
 💼 [LinkedIn](https://www.linkedin.com/in/roumaisa-tanveer/)
 
-![Profile views](https://komarev.com/ghpvc/?username=RoumaisaTanveer&color=green)
+![Profile views](https://komarev.com/ghpvc/?username=RoumaisaTanveer&color=blue)
 
 ### 🛠️ Tech Stack
 <!-- AI & Data Science -->
