@@ -12,7 +12,7 @@
 
 🧠 I'm fascinated by the power of Artificial Intelligence and constantly trying to keep up with its pace (too fast😥).
 
-💻 I love building things that feel like home – from smart apps to creative AI-driven tools.
+💻 I love building things that feel like home, from smart apps to creative AI-driven tools.
 
 ☠ I may not be the smartest, but I work smarter and harder.
 
