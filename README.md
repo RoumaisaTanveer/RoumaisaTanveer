@@ -1,7 +1,7 @@
 <h1 align="center">ROUMAISA TANVEER</h1>
 
 <p align="center">
-  <b>Backend & AI Engineer &nbsp;·&nbsp; FastAPI · LLMs · RAG · Flutter</b>
+  <b>Backend & AI Engineer &nbsp;·&nbsp; FastAPI · LLMs · RAG </b>
 </p>
 
 <p align="center">
