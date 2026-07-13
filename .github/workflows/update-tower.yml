@@ -1,0 +1,40 @@
+name: Update commit tower
+
+on:
+  schedule:
+    # every day at 06:00 UTC — adjust as you like
+    - cron: "0 6 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-tower:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Regenerate tower SVG from live stats
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: RoumaisaTanveer
+        run: python scripts/generate_tower.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet -- assets/commit-tower.svg; then
+            git add assets/commit-tower.svg
+            git commit -m "chore: refresh commit-tower stats"
+            git push
+          else
+            echo "No changes to commit."
+          fi
