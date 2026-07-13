@@ -446,7 +446,7 @@
   </rect>
 
   <text x="190.0" y="405" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#8b949e" opacity="0">
-    18 repos · 34 stars · 12 followers
+ 
     <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.830;0.880;0.900;1" dur="8s" repeatCount="indefinite"/>
   </text>
 </svg>
