@@ -11,7 +11,7 @@
 
 <img src="https://komarev.com/ghpvc/?username=RoumaisaTanveer&color=blue" /><br/>
 
-<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=20&pause=1200&color=58A6FF&center=true&vCenter=true&width=500&lines=there's+always+one+more+bug...;backend+by+day%2C+author+by+night;compiling+coffee+into+code;git+commit+-m+%22it+works+now%22" alt="typing-svg" />
+<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=20&pause=1200&color=58A6FF&center=true&vCenter=true&width=500&lines=final+final+commit...;really+final;git+commit+-m+%22it+works+now%22" alt="typing-svg" />
 
 </td>
 <td align="center" width="40%">
@@ -29,7 +29,7 @@
 | Project | What it does | Stack |
 |---|---|---|
 | **[Synapse](https://synapse-get-app.netlify.app)** | Team-matching FYP — 3-layer hybrid engine (heuristic + K-Means + Random Forest/SHAP) across 33 skill domains | FastAPI · PostgreSQL · Flutter · JWT |
-| **[Quran Journaling App](https://github.com/RoumaisaTanveer/QuranJournalApp-Preview)** | RAG pipeline matching journal entries to Quran ayahs — keyword emotion detection → LLM fallback → cosine + MMR scoring across 6,237 ayahs | FastAPI · Flutter · Mistral-7B · Sentence Transformers |
+| **[Uns](https://github.com/RoumaisaTanveer/QuranApp_frontend/releases/download/v1.0.0/app-release.apk)** | RAG pipeline matching journal entries to Quran ayahs — keyword emotion detection → LLM fallback → cosine + MMR scoring across 6,237 ayahs | FastAPI · Flutter · Mistral-7B · Sentence Transformers |
 | **[GlassPen](https://microsoftedge.microsoft.com/addons/detail/glasspen/oggldpkiodoeegmmolokkenbhlicplbn)** | Browser annotation extension — draw, highlight, sticky notes, AI summarize/explain, PDF export | JS · Chrome Extensions API · Cloudflare Workers |
 
 ---
