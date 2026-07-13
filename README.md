@@ -1,29 +1,26 @@
-<h1 align="center">ROUMAISA TANVEER</h1>
+<table>
+<tr>
+<td valign="middle" width="60%">
 
-<p align="center">
-  <b>Backend & AI Engineer &nbsp;·&nbsp; FastAPI · LLMs · RAG </b>
-</p>
+<h1>ROUMAISA TANVEER</h1>
 
-<p align="center">
-  <a href="mailto:roumaisatanveer6@gmail.com"> Email</a> &nbsp;|&nbsp;
-  <a href="https://www.linkedin.com/in/roumaisa-tanveer/"> LinkedIn</a>
-</p>
+<b>Backend & AI Engineer &nbsp;·&nbsp; FastAPI · LLMs · RAG</b>
 
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=RoumaisaTanveer&color=blue" />
-</p>
+<a href="mailto:roumaisatanveer6@gmail.com">Email</a> &nbsp;|&nbsp;
+<a href="https://www.linkedin.com/in/roumaisa-tanveer/">LinkedIn</a>
 
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=20&pause=1200&color=58A6FF&center=true&vCenter=true&width=550&lines=there's+always+one+more+bug...;backend+by+day%2C+author+by+night;compiling+coffee+into+code;git+commit+-m+%22it+works+now%22" alt="typing-svg" />
-</p>
+<img src="https://komarev.com/ghpvc/?username=RoumaisaTanveer&color=blue" /><br/>
 
----
+<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=20&pause=1200&color=58A6FF&center=true&vCenter=true&width=500&lines=there's+always+one+more+bug...;backend+by+day%2C+author+by+night;compiling+coffee+into+code;git+commit+-m+%22it+works+now%22" alt="typing-svg" />
 
-<div align="center">
+</td>
+<td align="center" width="40%">
 
-<img src="assets/commit-tower.svg" alt="a single commit growing into a tower, one block at a time" width="260" />
+<img src="assets/commit-tower.svg" alt="a seed growing into a tree, one commit at a time" width="220" />
 
-</div>
+</td>
+</tr>
+</table>
 
 ---
 
