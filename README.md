@@ -13,16 +13,17 @@
   <img src="https://komarev.com/ghpvc/?username=RoumaisaTanveer&color=blue" />
 </p>
 
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=20&pause=1200&color=58A6FF&center=true&vCenter=true&width=550&lines=there's+always+one+more+bug...;backend+by+day%2C+author+by+night;compiling+coffee+into+code;git+commit+-m+%22it+works+now%22" alt="typing-svg" />
+</p>
+
 ---
 
-### 👩‍💻 About Me
+<div align="center">
 
-Software engineer focused on backend systems and applied AI — the kind that actually ships.
+<img src="assets/commit-tower.svg" alt="a single commit growing into a tower, one block at a time" width="260" />
 
-BS IT graduate from PUCIT (2026).
-
-I build things end-to-end: REST APIs, RAG pipelines, Flutter apps, Chrome extensions. I care about clean architecture, real test coverage, and not overengineering things.
-
+</div>
 
 ---
 
