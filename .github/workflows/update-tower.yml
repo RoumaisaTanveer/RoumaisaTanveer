@@ -1,40 +1,173 @@
-name: Update commit tower
+#!/usr/bin/env python3
+"""
+Pulls real GitHub stats for a user and regenerates assets/commit-tower.svg —
+a tower built out of small commit-style squares (GitHub contribution-graph
+green shades), stacked layer by layer, sized by real repo/star/follower counts.
 
-on:
-  schedule:
-    # every day at 06:00 UTC — adjust as you like
-    - cron: "0 6 * * *"
-  workflow_dispatch: {}
+Run manually:
+    GITHUB_TOKEN=xxxx GITHUB_USERNAME=RoumaisaTanveer python scripts/generate_tower.py
 
-permissions:
-  contents: write
+In CI (GitHub Actions), GITHUB_TOKEN is provided automatically.
+"""
 
-jobs:
-  update-tower:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+import os
+import sys
+import random
+import urllib.request
+import json
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+USERNAME = os.environ.get("GITHUB_USERNAME", "RoumaisaTanveer")
+TOKEN = os.environ.get("GITHUB_TOKEN", "")
+OUT_PATH = os.path.join(os.path.dirname(__file__), "..", "assets", "commit-tower.svg")
 
-      - name: Regenerate tower SVG from live stats
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_USERNAME: RoumaisaTanveer
-        run: python scripts/generate_tower.py
+API = "https://api.github.com"
 
-      - name: Commit if changed
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet -- assets/commit-tower.svg; then
-            git add assets/commit-tower.svg
-            git commit -m "chore: refresh commit-tower stats"
-            git push
-          else
-            echo "No changes to commit."
-          fi
+# GitHub's own contribution-graph green shades (dark theme), darkest -> brightest
+GREEN_SHADES = ["#0e4429", "#006d32", "#26a641", "#39d353"]
+
+
+def gh_get(path):
+    req = urllib.request.Request(f"{API}{path}")
+    req.add_header("User-Agent", "tower-stats-script")
+    req.add_header("Accept", "application/vnd.github+json")
+    if TOKEN:
+        req.add_header("Authorization", f"Bearer {TOKEN}")
+    with urllib.request.urlopen(req) as resp:
+        return json.loads(resp.read().decode())
+
+
+def fetch_stats(username):
+    user = gh_get(f"/users/{username}")
+    repos = []
+    page = 1
+    while True:
+        batch = gh_get(f"/users/{username}/repos?per_page=100&page={page}")
+        if not batch:
+            break
+        repos.extend(batch)
+        if len(batch) < 100:
+            break
+        page += 1
+
+    public_repos = user.get("public_repos", len(repos))
+    followers = user.get("followers", 0)
+    total_stars = sum(r.get("stargazers_count", 0) for r in repos)
+
+    return {"repos": public_repos, "followers": followers, "stars": total_stars}
+
+
+def pick_shade(intensity):
+    """intensity: 0.0-1.0, biases which green shade a cell gets, with jitter for texture."""
+    base = round(intensity * (len(GREEN_SHADES) - 1))
+    jitter = random.choice([-1, 0, 0, 1])
+    idx = max(0, min(len(GREEN_SHADES) - 1, base + jitter))
+    return GREEN_SHADES[idx]
+
+
+def generate_svg(stats):
+    random.seed(f"{stats['repos']}-{stats['stars']}-{stats['followers']}")
+
+    # Tapering, stepped silhouette (wide base -> narrow spire), like a ziggurat/setback skyscraper
+    TIER_COLUMNS = [7, 5, 3, 1]
+    cell = 18
+    gap = 4
+    pitch = cell + gap
+
+    rows_total = max(8, min(24, round(stats["repos"] / 2) or 8))
+    intensity = min(1.0, stats["stars"] / max(stats["repos"], 1) / 4)
+
+    num_tiers = len(TIER_COLUMNS)
+    base_rows_per_tier = rows_total // num_tiers
+    remainder = rows_total - base_rows_per_tier * num_tiers
+    # give the extra rows to the base tiers first, so the bottom stays chunkiest
+    rows_per_tier = [base_rows_per_tier + (1 if i < remainder else 0) for i in range(num_tiers)]
+    rows_per_tier = [max(1, r) for r in rows_per_tier]
+    rows_total = sum(rows_per_tier)
+
+    widest_tier_width = TIER_COLUMNS[0] * pitch - gap
+    tower_height = rows_total * pitch - gap
+
+    top_margin = 55       # room for the flag/spire above the tower
+    bottom_margin = 45    # room for the caption below the ground line
+
+    ground_y = top_margin + tower_height
+    svg_height = ground_y + bottom_margin
+    svg_width = max(260, widest_tier_width + 40)
+    center_x = svg_width / 2
+
+    # timing: rows build from 0.05 -> 0.72 of the cycle, then flag, then caption, then hold, then fade
+    build_start, build_end = 0.05, 0.72
+    row_step = (build_end - build_start) / rows_total
+
+    cells_svg = []
+    row_counter = 0  # counts from bottom (0) upward across all tiers
+    for tier_idx, tier_cols in enumerate(TIER_COLUMNS):
+        tier_width = tier_cols * pitch - gap
+        tier_x = center_x - tier_width / 2
+        for _ in range(rows_per_tier[tier_idx]):
+            row_y = ground_y - (row_counter + 1) * pitch + gap
+            appear_start = build_start + row_counter * row_step
+            appear_end = appear_start + row_step * 0.5
+            for c in range(tier_cols):
+                cell_x = tier_x + c * pitch
+                shade = pick_shade(intensity + random.uniform(-0.15, 0.15))
+                cells_svg.append(f"""
+  <rect x="{cell_x:.1f}" y="{row_y:.1f}" width="{cell}" height="{cell}" rx="3" fill="{shade}" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;{appear_start:.3f};{appear_end:.3f};0.9;1" dur="8s" repeatCount="indefinite"/>
+  </rect>""")
+            row_counter += 1
+
+    flag_appear = build_end + 0.03
+    flag_bounce_mid = flag_appear + 0.02
+    flag_bounce_end = flag_appear + 0.06
+    caption_appear = flag_bounce_end + 0.02
+    flag_top_y = top_margin - 40
+    flag_base_y = top_margin
+
+    caption = f"{stats['repos']} repos · {stats['stars']} stars · {stats['followers']} followers"
+
+    svg = f"""<svg width="{svg_width:.0f}" height="{svg_height:.0f}" viewBox="0 0 {svg_width:.0f} {svg_height:.0f}" xmlns="http://www.w3.org/2000/svg">
+  <!-- auto-generated: live GitHub stats for {USERNAME} -->
+  <line x1="20" y1="{ground_y:.1f}" x2="{svg_width - 20:.1f}" y2="{ground_y:.1f}" stroke="#30363d" stroke-width="2"/>
+
+  <circle cx="{center_x:.1f}" cy="{ground_y + 3:.1f}" r="4" fill="#39d353">
+    <animate attributeName="opacity" values="0;0;1;1;1;0" keyTimes="0;0.02;0.04;0.9;0.92;1" dur="8s" repeatCount="indefinite"/>
+  </circle>
+{"".join(cells_svg)}
+
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;{flag_appear:.3f};{flag_bounce_end:.3f};0.9;1" dur="8s" repeatCount="indefinite"/>
+    <line x1="{center_x:.1f}" y1="{flag_base_y}" x2="{center_x:.1f}" y2="{flag_top_y}" stroke="#8b949e" stroke-width="2"/>
+    <path d="M {center_x:.1f},{flag_top_y} L {center_x + 18:.1f},{flag_top_y + 8} L {center_x:.1f},{flag_top_y + 16} Z" fill="#39d353">
+      <animateTransform attributeName="transform" type="scale"
+        values="0.6;0.6;1.15;1;1;1" keyTimes="0;{flag_appear:.3f};{flag_bounce_mid:.3f};{flag_bounce_end:.3f};0.9;1"
+        dur="8s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <text x="{center_x:.1f}" y="{svg_height - 15:.0f}" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#8b949e" opacity="0">
+    {caption}
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;{caption_appear:.3f};{min(caption_appear + 0.06, 0.88):.3f};0.9;1" dur="8s" repeatCount="indefinite"/>
+  </text>
+</svg>
+"""
+    return svg
+
+
+def main():
+    try:
+        stats = fetch_stats(USERNAME)
+    except Exception as e:
+        print(f"Failed to fetch GitHub stats: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    svg = generate_svg(stats)
+    os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
+    with open(OUT_PATH, "w") as f:
+        f.write(svg)
+
+    print(f"Updated {OUT_PATH} with stats: {stats}")
+
+
+if __name__ == "__main__":
+    main()
