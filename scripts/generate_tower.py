@@ -40,10 +40,10 @@ BLOSSOM_COLOR = "#f778ba"
 BG_COLOR = "#161b22"
 
 # --- grid constants: everything snaps to this pitch, GitHub-cell style ---
-BLOCK_SIZE = 10
-BLOCK_GAP = 2
+BLOCK_SIZE = 14
+BLOCK_GAP = 3
 PITCH = BLOCK_SIZE + BLOCK_GAP
-CORNER_R = 2
+CORNER_R = 3
 
 
 def gh_get(path):
@@ -110,10 +110,10 @@ def emit_block(parts, cx, cy, shade, a_start, a_end, size=BLOCK_SIZE):
 def generate_svg(stats):
     random.seed(f"{stats['repos']}-{stats['stars']}-{stats['followers']}")
 
-    svg_width = 380
-    svg_height = 420
+    svg_width = 540
+    svg_height = 595
     center_x = svg_width / 2
-    ground_y = 350
+    ground_y = 496
 
     intensity = min(1.0, stats["stars"] / max(stats["repos"], 1) / 4)
     # density scales canopy row/col reach with real stats (denser tree = more activity)
@@ -284,11 +284,10 @@ def generate_svg(stats):
 
     svg = f"""<svg width="{svg_width}" height="{svg_height}" viewBox="0 0 {svg_width} {svg_height}" xmlns="http://www.w3.org/2000/svg">
   <!-- auto-generated: live GitHub stats for {USERNAME} -->
-  <rect x="0" y="0" width="{svg_width}" height="{svg_height}" fill="{BG_COLOR}"/>
-  <line x1="20" y1="{ground_y:.1f}" x2="{svg_width - 20}" y2="{ground_y:.1f}" stroke="#30363d" stroke-width="2"/>
+  <line x1="28" y1="{ground_y:.1f}" x2="{svg_width - 28}" y2="{ground_y:.1f}" stroke="#30363d" stroke-width="2"/>
 {"".join(parts)}
 
-  <text x="{center_x:.1f}" y="{svg_height - 15}" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#8b949e" opacity="0">
+  <text x="{center_x:.1f}" y="{svg_height - 20}" text-anchor="middle" font-family="Consolas, monospace" font-size="15" fill="#8b949e" opacity="0">
     {caption}
     <animate attributeName="opacity" values="{fade(caption_appear, caption_appear + 0.05)}" dur="8s" repeatCount="indefinite"/>
   </text>
