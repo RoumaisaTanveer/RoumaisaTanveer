@@ -110,10 +110,10 @@ def emit_block(parts, cx, cy, shade, a_start, a_end, size=BLOCK_SIZE):
 def generate_svg(stats):
     random.seed(f"{stats['repos']}-{stats['stars']}-{stats['followers']}")
 
-    svg_width = 540
-    svg_height = 595
+    svg_width = 330
+    svg_height = 395
     center_x = svg_width / 2
-    ground_y = 496
+    ground_y = 299
 
     intensity = min(1.0, stats["stars"] / max(stats["repos"], 1) / 4)
     # density scales canopy row/col reach with real stats (denser tree = more activity)
