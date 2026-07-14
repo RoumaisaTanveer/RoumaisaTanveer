@@ -16,9 +16,7 @@
 </td>
 <td align="center" width="40%">
 
-<img src="assets/commit-tower.svg" alt="a seed growing into a tree, one commit at a time" width="220" />
-
-</td>
+<img src="assets/commit-tower.svg" alt="a seed growing into a tree, one commit at a time" width="300" /></td>
 </tr>
 </table>
 
