@@ -27,7 +27,7 @@
 | Project | What it does | Stack |
 |---|---|---|
 | **[Synapse](https://synapse-get-app.netlify.app)** | Team-matching FYP — 3-layer hybrid engine (heuristic + K-Means + Random Forest/SHAP) across 33 skill domains | FastAPI · PostgreSQL · Flutter · JWT |
-| **[Uns](https://github.com/RoumaisaTanveer/QuranApp_frontend/releases/download/v1.0.0/app-release.apk)** | RAG pipeline matching journal entries to Quran ayahs — keyword emotion detection → LLM fallback → cosine + MMR scoring across 6,237 ayahs | FastAPI · Flutter · Mistral-7B · Sentence Transformers |
+| **[Uns](https://github.com/RoumaisaTanveer/QuranApp_frontend/releases/download/v1.0.0/app-release.apk)** | RAG pipeline matching journal entries to Quran ayahs — keyword emotion detection → LLM fallback → cosine + MMR scoring across 6237 ayahs | FastAPI · Flutter · Mistral-7B · Sentence Transformers |
 | **[GlassPen](https://microsoftedge.microsoft.com/addons/detail/glasspen/oggldpkiodoeegmmolokkenbhlicplbn)** | Browser annotation extension — draw, highlight, sticky notes, AI summarize/explain, PDF export | JS · Chrome Extensions API · Cloudflare Workers |
 
 ---
